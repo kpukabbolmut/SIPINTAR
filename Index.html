@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Si-PINTAR KPU Bolmut</title>
+  
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/46/KPU_Logo.svg" type="image/svg+xml">
+
+  <style>
+    /* Menghilangkan semua jarak dan membuat bingkai memenuhi 100% layar HP/Laptop */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Mencegah layar utama bergeser */
+      background-color: #f8fafc;
+    }
+    
+    /* Desain Pembungkus (Iframe) */
+    .app-container {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    /* Animasi Loading sebelum aplikasi Google Script terbuka */
+    .loading-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #0f172a; /* Warna gelap khas aplikasi kita */
+      z-index: 1;
+    }
+    .loader {
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-left-color: #ef4444; /* Warna merah KPU */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .loading-text { color: white; font-family: sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 2px; }
+  </style>
+</head>
+<body>
+
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <div class="loading-text">MEMUAT SI-PINTAR...</div>
+  </div>
+
+  <iframe class="app-container" src="https://script.google.com/macros/s/AKfycbzfZUHWJc4Cp4NwbzGuehhCuuZcRTZW4A6C6UeoQt4XH3pzbys2XODHnT-EgMRaahEJ/exec" allow="camera; microphone; fullscreen; display-capture" allowfullscreen></iframe>
+
+</body>
+</html>

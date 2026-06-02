@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- JURUS ANTI-CACHE UNTUK GITHUB PAGES -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
   <title>Si-PINTAR KPU Bolmut</title>
   
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/46/KPU_Logo.svg" type="image/svg+xml">
@@ -65,5 +71,22 @@
 
   <iframe class="app-container" src="https://script.google.com/macros/s/AKfycbyhnRFfoLqumrFHRG6xfZgZif2AJZFtp43R0peOVKfHhSbE3BuIDsNbQP-qIlb-26Fk/exec" allow="camera; microphone; fullscreen; display-capture" allowfullscreen></iframe>
 
+  <!-- SCRIPT AUTO-REFRESH DARI SATU RUMAH -->
+  <script>
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      // Jika mendeteksi parameter 'v' (waktu) dari link Satu Rumah
+      if (urlParams.has('v')) {
+        const currentVersion = urlParams.get('v');
+        const lastVersion = sessionStorage.getItem('appVersion');
+        
+        // Jika versinya berbeda, paksa muat ulang halaman dari server
+        if (lastVersion !== currentVersion) {
+          sessionStorage.setItem('appVersion', currentVersion);
+          window.location.reload(true); 
+        }
+      }
+    };
+  </script>
 </body>
 </html>
